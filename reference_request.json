@@ -1,0 +1,24 @@
+{
+    "app_profile": {
+        "icto_id": "31400"
+    },
+    "common_tags": {
+        "business_unit": "hr",
+        "environment": "dev",
+        "icto": "31400"
+    },
+    "capabilities_list": [
+        "EnableAggregationPipeline",
+        "mongoEnableDocLevelTTL",
+        "MongoDBv3.4",
+        "EnableMongo"
+    ],
+    "resource_group_name": "myrg",
+    "resource_group_location": "eastus",
+    "azurerm_cosmosdb_account": {
+        "azurerm_cosmosdb_account_name": "djangotangodb",
+        "azurerm_cosmosdb_account_offertype": "Standard",
+        "azurerm_cosmosdb_account_kind": "MongoDB"
+    }
+}
+
