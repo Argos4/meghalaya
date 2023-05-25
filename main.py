@@ -5,12 +5,12 @@ from pydantic import BaseModel
 import validation
 
 class AppProfile(BaseModel):
-    icto_id : str
+    app_id : str
 
 class CommonTags(BaseModel):
     business_unit: str
     environment: str
-    icto: str
+    app: str
 
 class CosmosDBAccount(BaseModel):
     azurerm_cosmosdb_account_name: str
@@ -34,7 +34,7 @@ async def home():
 
 @app.post("/build_resource/")
 async def build_resource(resource: DataModel):
-    if validation.validate_icto(resource.app_profile.icto_id) == True :
+    if validation.validate_app(resource.app_profile.app_id) == True :
         return {"Input for Cosmos DB": "valid Response"}
 
     else:

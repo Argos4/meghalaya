@@ -1,6 +1,6 @@
-def validate_icto(icto):
-    if icto == "31400":
-        print("ICTO is validated")
+def validate_app(app_id):
+    if app_id == "314":
+        print("App profile is validated")
         return True
     else:
         return False

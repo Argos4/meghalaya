@@ -1,11 +1,11 @@
 {
     "app_profile": {
-        "icto_id": "31400"
+        "app_id": "314"
     },
     "common_tags": {
         "business_unit": "hr",
         "environment": "dev",
-        "icto": "31400"
+        "app_id": "31400"
     },
     "capabilities_list": [
         "EnableAggregationPipeline",
