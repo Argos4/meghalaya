@@ -1,29 +1,8 @@
 from typing import Union
-from typing import List
 from fastapi import FastAPI
-from pydantic import BaseModel
+from resourcemodel import DataModel
 import validation
-
-class AppProfile(BaseModel):
-    app_id : str
-
-class CommonTags(BaseModel):
-    business_unit: str
-    environment: str
-    app: str
-
-class CosmosDBAccount(BaseModel):
-    azurerm_cosmosdb_account_name: str
-    azurerm_cosmosdb_account_offertype: str
-    azurerm_cosmosdb_account_kind: str
-
-class DataModel(BaseModel):
-    app_profile: AppProfile
-    common_tags: CommonTags
-    capabilities_list: List[str]
-    resource_group_name: str
-    resource_group_location: str
-    azurerm_cosmosdb_account: CosmosDBAccount
+import redisoperations
 
 
 app = FastAPI()
@@ -34,8 +13,11 @@ async def home():
 
 @app.post("/build_resource/")
 async def build_resource(resource: DataModel):
-    if validation.validate_app(resource.app_profile.app_id) == True :
+    if validation.validate_app(resource.app_profile.app_id) == True \
+            and validation.validate_cloud_details(resource.cloud_details.cloud_provider,resource.cloud_details.resource):
+        redisoperations.drop_resource_in_redis(resource)
+
         return {"Input for Cosmos DB": "valid Response"}
 
     else:
-        return {"Response from API": "Invalid Request"}
+        return {"Response from API": "Invalid Request; check cloud_details and app id details are correct"}

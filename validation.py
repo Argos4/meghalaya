@@ -4,3 +4,9 @@ def validate_app(app_id):
         return True
     else:
         return False
+def validate_cloud_details(cloud_provider, resource):
+    if cloud_provider in ("azure","aws","gcp") and resource in ("cosmosdb"):
+
+        return True
+    else:
+        return False

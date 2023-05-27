@@ -2,10 +2,15 @@
     "app_profile": {
         "app_id": "314"
     },
+    "cloud_details": {
+        "cloud_provider": "azure",
+        "resource" : "cosmosdb"
+    },
+
     "common_tags": {
         "business_unit": "hr",
         "environment": "dev",
-        "app_id": "31400"
+        "app": "314"
     },
     "capabilities_list": [
         "EnableAggregationPipeline",
